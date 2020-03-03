@@ -23,11 +23,15 @@
 	insertonIndex(i)		: insert element on given index
 	getNthNode(n)			: get data on nth node
 	size()					: get number of elements on linked list
-	printAllElements		: print all the elements on linked list
+	printAllElements()		: print all the elements on linked list
+	search(v)				: search for value v in linked list returns true if found else returns false
+	removeDuplicates()		: removes duplicate data elements on linked list
 	
 */
 #include <iostream>
+#include <unordered_set>
 #include <assert.h>
+
 class Node{
 	public:
 		int data;
@@ -165,6 +169,74 @@ class SinglyLinkedList{
 		return list_size;
 	}
 	
+	bool search(int value){
+		Node* list = head;
+		while(list!=NULL){
+			if(list->data == value){
+				return true;
+			}
+			list = list->next;
+		}
+		return false;
+	}
+	
+	void removeDuplicates(){
+		std::unordered_set<int> unique_set; // using hash table
+		Node* list = head;
+		Node* prev = NULL;
+		while(list!=NULL){
+			if(unique_set.find(list->data)==unique_set.end()){
+				unique_set.insert(list->data);
+				prev = list;
+				list= list->next;
+			}
+			else{
+				prev->next = list->next;
+				list= list->next;
+			}
+		}
+	}
+	
+	void swap(int x,int y){		
+		if (x==y){
+			return;
+		}
+		Node* prevX=NULL, *currX=head;
+		Node* prevY=NULL, *currY=head;
+		while(currX!=NULL && currX->data!=x){
+			prevX = currX;
+			currX = currX->next;
+		}
+	while(currY!=NULL && currY->data!=y){
+			prevY = currY;
+			currY = currY->next;
+		}
+		//condition
+		// if x or y is not present
+		if(currX==NULL || currY==NULL){
+			return;
+		}
+		// x is first node i.e prevX = NULL
+		if(prevX==NULL){
+			head = currY;
+		}
+		else{
+			prevX->next = currY;
+		}
+		
+		// y is first node i.e. prevY == NULL
+		if(prevY==NULL){
+			head = currX;
+		}
+		else{
+			prevY->next = currX;
+		}
+			
+		Node* temp = currY->next;
+		currY->next = currX->next;
+		currX->next = temp;			
+	}
+	
 };
 
 int main(){
@@ -211,6 +283,37 @@ int main(){
 	std::cout<<"linkedlist2 after deleting element on 2nd index"<<std::endl;
 	linkedlist2.remove(2);
 	linkedlist2.printAllElements();
+	
+	SinglyLinkedList linkedlist3;
+	linkedlist3.push(1);
+	linkedlist3.push(3);
+	linkedlist3.push(4);
+	linkedlist3.push(6);
+	linkedlist3.push(1);
+	linkedlist3.push(6);
+	linkedlist3.push(1);
+	linkedlist3.push(1);
+	linkedlist3.push(4);
+	linkedlist3.push(3);
+	linkedlist3.push(5);
+	linkedlist3.push(5);
+	linkedlist3.push(1);
+	
+	std::cout<<"\nSize of linkedlist3 is "<<linkedlist3.size()<<std::endl;
+
+	std::cout << "Elements in Linked List 3 are " << std::endl;
+	linkedlist3.printAllElements();
+	
+	std::cout << "Removing Duplicate Elements in Linked List 3... " << std::endl;
+	linkedlist3.removeDuplicates();
+	linkedlist3.printAllElements();
+
+	std::cout<<"Swapping position of 3 and 5 in linkedlist3"<<std::endl;
+	linkedlist3.swap(3,5);
+	linkedlist3.printAllElements();
+	
+
+	
 	
 	return 0;
 }

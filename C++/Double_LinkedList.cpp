@@ -17,6 +17,7 @@ Description:
 	getNthNode(n)			: get data on nth node
 	size()					: get number of elements on linked list
 	printAllElements		: print all the elements on linked list
+	search(v)				: search for value v in linked list returns true if found else returns false
 	
 	
 	use append and pop for queue
@@ -201,6 +202,17 @@ class DoubleLinkedList{
 	}
 	int size(){
 		return list_size;
+	}
+	
+	bool search(int value){
+		Node* list = head;
+		while(list!=NULL){
+			if(list->data == value){
+				return true;
+			}
+			list = list->next;
+		}
+		return false;
 	}
 };
 

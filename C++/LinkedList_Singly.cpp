@@ -28,6 +28,7 @@
 	removeDuplicates()		: removes duplicate data elements on linked list
 	swap()					: swaps two nodes
 	segregateOddEven()		: Segregate even and odd nodes in a LinkedList keeping the order of even and odd number same.
+	reverse					: reverse all the nodes in the linkedlist
 */
 #include <iostream>
 #include <unordered_set>
@@ -272,7 +273,7 @@ public:
 		int counter = 0;
 		//Node* tail = head;
 		//extracting even numbers from linkedlist first
-		while (list != NULL && counter<list_size) {
+		while (list != NULL && counter < list_size) {
 			if (list->data % 2 != 0) {
 				tail->next = list;
 				if (prev != NULL)
@@ -287,6 +288,18 @@ public:
 			}
 			counter++;
 		}
+	}
+
+	void reverse() {
+		Node* prev = NULL, *curr=head;
+		while (curr != NULL) {
+			Node* nextnode = curr->next;
+			curr->next = prev;
+			prev = curr;
+			curr = nextnode;
+		}
+		tail = head;
+		head = prev;
 	}
 
 };
@@ -376,5 +389,8 @@ int main() {
 	linkedlist3.segregateOddEven();
 	linkedlist3.printAllElements();
 
+	std::cout << "Reversing linkedlist3" << std::endl;
+	linkedlist3.reverse();
+	linkedlist3.printAllElements();
 	return 0;
 }

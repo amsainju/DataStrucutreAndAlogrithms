@@ -1,0 +1,8 @@
+Double Linked List 
+- Interesting problems
+
+1. Quicksort on Doubly Linked list
+2. Mergesort for Doubly Linked List
+3. Find pairs with given sum in doubly linked list
+4. Reverse a Doubly Linked list
+5. 

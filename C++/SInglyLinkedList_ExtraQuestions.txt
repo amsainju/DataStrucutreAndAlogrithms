@@ -1,0 +1,20 @@
+Singly Linked List Extra Materials: to try
+
+1. Intersection of two Sorted Linked Lists
+My Appraoch:
+	- loop through each element of one linked list
+	and create a hash table using unordered_set say elem_set
+	- loop through each element of second linked list
+	and check if the element are in the elem_set? if yes
+	push the data to new linkedlist
+	
+	- use one loop 
+	- add the element on one linked list to the elem_set
+	until it the last element added is greater than the current 
+	element in second linkedlist.
+	MAX_L1  ...
+	
+2. QuickSort on Linked List
+
+3. Segregate even and odd nodes in a LinkedList
+	- done

@@ -29,6 +29,8 @@
 	swap()					: swaps two nodes
 	segregateOddEven()		: Segregate even and odd nodes in a LinkedList keeping the order of even and odd number same.
 	reverse					: reverse all the nodes in the linkedlist
+	
+	Note: if you add any more function remember to check the tail pointer is correct or not.
 */
 #include <iostream>
 #include <unordered_set>
